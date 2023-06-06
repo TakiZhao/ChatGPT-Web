@@ -11,8 +11,8 @@ import { prettyObject } from "@/app/utils/format";
 
 export class ChatGPTApi implements LLMApi {
   public ChatPath = "v1/chat/completions";
-  public UsagePath = "dashboard/billing/usage";
-  public SubsPath = "dashboard/billing/subscription";
+  public UsagePath = "v1/dashboard/billing/usage";
+  public SubsPath = "v1/dashboard/billing/subscription";
 
   path(path: string): string {
     let openaiUrl = useAccessStore.getState().openaiUrl;
@@ -162,6 +162,10 @@ export class ChatGPTApi implements LLMApi {
       options.onError?.(e as Error);
     }
   }
+
+  /**
+   * 查询账户信息和余额
+   */
   async usage() {
     const formatDate = (d: Date) =>
       `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, "0")}-${d

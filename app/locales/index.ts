@@ -49,7 +49,7 @@ export const ALL_LANG_OPTIONS: Record<Lang, string> = {
 };
 
 const LANG_KEY = "lang";
-const DEFAULT_LANG = "en";
+const DEFAULT_LANG = "cn";
 
 function getItem(key: string) {
   try {
@@ -81,13 +81,13 @@ export function getLang(): Lang {
     return savedLang as Lang;
   }
 
-  const lang = getLanguage();
-
-  for (const option of AllLangs) {
-    if (lang.includes(option)) {
-      return option;
-    }
-  }
+  // const lang = getLanguage();
+  //
+  // for (const option of AllLangs) {
+  //   if (lang.includes(option)) {
+  //     return option;
+  //   }
+  // }
 
   return DEFAULT_LANG;
 }
